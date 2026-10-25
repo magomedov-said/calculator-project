@@ -21,9 +21,7 @@ public class HistoryManager {
 
         String result = "";
 
-        int start = Math.max(0, operations.size() - 10);
-
-        for (int i = start; i < operations.size(); i++) {
+        for (int i = 0; i < operations.size(); i++) {
             result += (i + 1) + ") " + operations.get(i) + "\n";
         }
 
