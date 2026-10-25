@@ -85,11 +85,12 @@ public class Main {
 
             double result = calculator.calculate(a, b, operator);
 
-            System.out.println("Результат: " + result);
+            String operation = a + " " + operator + " "
+                    + b + " = " + result;
 
-            HistoryManager.add(
-                    a + " " + operator + " " + b + " = " + result
-            );
+            System.out.println(operation);
+
+            HistoryManager.add(operation);
 
         } catch (NumberFormatException e) {
             System.out.println("Ошибка: введите корректные числа");
