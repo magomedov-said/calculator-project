@@ -7,6 +7,10 @@ public class HistoryManager {
     public static ArrayList<String> operations = new ArrayList<>();
 
     public static void add(String operation) {
+        if (operations.size() >= 10) {
+            operations.remove(0);
+        }
+
         operations.add(operation);
     }
 

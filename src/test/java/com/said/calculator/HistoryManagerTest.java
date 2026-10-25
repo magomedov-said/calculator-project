@@ -59,9 +59,9 @@ class HistoryManagerTest {
 
         String history = HistoryManager.history();
 
-        assertTrue(history.contains("2) Операция 2"));
-        assertTrue(history.contains("11) Операция 11"));
-        assertTrue(!history.contains("1) Операция 1\n"));
+        assertTrue(history.contains("1) Операция 2\n"));
+        assertTrue(history.contains("10) Операция 11\n"));
+        assertTrue(!history.contains("Операция 1\n"));
     }
 }
 
