@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class HistoryManager {
 
-    public static ArrayList<String> operations = new ArrayList<>();
+    private static ArrayList<String> operations = new ArrayList<>();
 
     public static void add(String operation) {
         if (operations.size() >= 10) {
