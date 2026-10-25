@@ -9,6 +9,11 @@ public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    private static double lastA;
+    private static double lastB;
+    private static String lastOperator;
+    private static boolean hasLast = false;
+
     public static void main(String[] args) {
         run(scanner);
     }
@@ -30,18 +35,34 @@ public class Main {
                 continue;
             }
 
-            if (input.equalsIgnoreCase("last")) {
-                System.out.println(HistoryManager.last());
-                continue;
-            }
-
             if (input.equalsIgnoreCase("clear")) {
                 HistoryManager.clear();
+                hasLast = false;
                 continue;
             }
 
             if (input.equalsIgnoreCase("help")) {
                 System.out.println(HistoryManager.help());
+                continue;
+            }
+
+            if (input.equalsIgnoreCase("last")) {
+
+                if (hasLast) {
+                    double result = calculator.calculate(
+                            lastA, lastB, lastOperator
+                    );
+
+                    String operation = lastA + " " + lastOperator
+                            + " " + lastB + " = " + result;
+
+                    System.out.println(operation);
+                    HistoryManager.add(operation);
+
+                } else {
+                    System.out.println("Нет последней операции");
+                }
+
                 continue;
             }
 
@@ -84,6 +105,11 @@ public class Main {
             double b = Double.parseDouble(secondNumber);
 
             double result = calculator.calculate(a, b, operator);
+
+            lastA = a;
+            lastB = b;
+            lastOperator = operator;
+            hasLast = true;
 
             String operation = a + " " + operator + " "
                     + b + " = " + result;
