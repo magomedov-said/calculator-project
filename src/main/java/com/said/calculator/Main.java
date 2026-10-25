@@ -54,26 +54,41 @@ public class Main {
 
     private static void calculate(String input, Calculator calculator) {
 
-        String[] parts = input
-                .replaceAll("([+*/-])", " $1 ")
-                .trim()
-                .split("\\s+");
+        input = input.replace(" ", "");
 
-        if (parts.length != 3) {
-            System.out.println("Ошибка: формат должен быть <число> <оператор> <число>");
+        int operatorIndex = -1;
+
+        for (int i = 1; i < input.length(); i++) {
+            char symbol = input.charAt(i);
+
+            if (symbol == '+' || symbol == '-' ||
+                    symbol == '*' || symbol == '/' ||
+                    symbol == '%') {
+
+                operatorIndex = i;
+                break;
+            }
+        }
+
+        if (operatorIndex == -1) {
+            System.out.println("Ошибка формата");
             return;
         }
 
-        try {
-            double a = Double.parseDouble(parts[0]);
-            double b = Double.parseDouble(parts[2]);
+        String firstNumber = input.substring(0, operatorIndex);
+        String operator = input.substring(operatorIndex, operatorIndex + 1);
+        String secondNumber = input.substring(operatorIndex + 1);
 
-            double result = calculator.calculate(a, b, parts[1]);
+        try {
+            double a = Double.parseDouble(firstNumber);
+            double b = Double.parseDouble(secondNumber);
+
+            double result = calculator.calculate(a, b, operator);
 
             System.out.println("Результат: " + result);
 
             HistoryManager.add(
-                    a + " " + parts[1] + " " + b + " = " + result
+                    a + " " + operator + " " + b + " = " + result
             );
 
         } catch (NumberFormatException e) {
