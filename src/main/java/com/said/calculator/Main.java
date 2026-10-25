@@ -42,8 +42,9 @@ public class Main {
             }
 
             if (input.equalsIgnoreCase("help")) {
-                System.out.println(HistoryManager.help());
+                help();
                 continue;
+
             }
 
             if (input.equalsIgnoreCase("last")) {
@@ -124,4 +125,14 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
+
+    private static void help() {
+        System.out.println("Доступные операции: +, -, *, /, %");
+        System.out.println("history - история вычислений");
+        System.out.println("last - повтор последней операции");
+        System.out.println("clear - очистить историю");
+        System.out.println("help - справка");
+        System.out.println("exit - выход");
+    }
+
 }

@@ -40,23 +40,4 @@ public class HistoryManager {
         operations.clear();
     }
 
-    public static String help() {
-        return """
-                Доступные команды:
-
-                <число> <оператор> <число>
-
-                Операторы:
-                +  сложение
-                -  вычитание
-                *  умножение
-                /  деление
-
-                Команды:
-                history  — история
-                last     — последняя операция
-                clear    — очистить историю
-                exit     — выход
-                """;
-    }
 }
