@@ -76,7 +76,7 @@ public class Main {
 
     private static void calculate(String input, Calculator calculator) {
 
-        input = input.replace(" ", "");
+        input = input.trim();
 
         int operatorIndex = -1;
 
@@ -97,9 +97,9 @@ public class Main {
             return;
         }
 
-        String firstNumber = input.substring(0, operatorIndex);
+        String firstNumber = input.substring(0, operatorIndex).trim();
         String operator = input.substring(operatorIndex, operatorIndex + 1);
-        String secondNumber = input.substring(operatorIndex + 1);
+        String secondNumber = input.substring(operatorIndex + 1).trim();
 
         try {
             double a = Double.parseDouble(firstNumber);
